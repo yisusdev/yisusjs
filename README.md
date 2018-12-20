@@ -2,4 +2,16 @@
 
 # Yisus
 
-Yisus es una libreria de programacion funcional, desarrollada en Sngular México, es decir por mexicanos.
+Yisus is a functional programming library for Node JS, developed at Sngular México.
+
+## Install
+```
+npm install yisus
+```
+## Usage
+```node
+const Y = require('yisus');
+
+const arr = [1, 2, 3];
+Y.map((i) => console.log(i))(arr);
+```
