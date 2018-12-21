@@ -4,7 +4,9 @@
 
 Yisus is a functional programming library for Node JS, developed at Sngular Mexico.
 <a id='toc'></a>
-## TOC
+## Table Of Contents
+- [Install](#install)
+- [Usage](#usage)
 - [Examples](#examples)
 - [Applier](#applier)
 - [Compose](#compose)
@@ -27,10 +29,13 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [PipeP](#pipeP)
 - [Thunk](#thunk)
 - [Where](#where)
+- [Contributors](#contributors)
+<a id='install'></a>
 ## Install
 ```
 npm install yisus
 ```
+<a id='usage'></a>
 ## Usage
 ```node
 const Y = require('yisus');
@@ -334,3 +339,6 @@ See: [```Y.filter()```](#filter), [```Y.where()```](#where), [```Y.equals()```](
 Y.filter(Y.where({name: Y.equals('Bruce')}))(items);
 ```
 [Menu](#toc)
+<a id='contributors'></a>
+## Contributors
+- Bruce Pineda - [bpinedah](https://github.com/bpinedah)
