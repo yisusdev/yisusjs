@@ -8,6 +8,10 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [Examples](#examples)
 - [Applier](#applier)
 - [Compose](#compose)
+- [Constant](#constant)
+- [Curry](#curry)
+- [Equals](#equals)
+- [Filter](#filter)
 ## Install
 ```
 npm install yisus
@@ -60,4 +64,49 @@ Y.compose(
 ```
 
 [Menu](#toc)
+<a id='constant'></a>
+### Constant
+Returns a constant value in a function.
+```node
+const c = Y.constant('Bruce');
+console.log(c());
+```
+[Menu](#toc)
+<a id='curry'></a>
+### Curry
+Curry a not curried function.
+```node
+const noCurried = (a, b, c, d) => a + b + c + d;
+const x = Y.curry(noCurried);
 
+console.log(x(2)(6)(2)(4));
+```
+[Menu](#toc)
+<a id='equals'></a>
+### Equals
+Returns if one value is equal to criteria.
+
+See: [```Y.filter()```](#filter), [```Y.where()```](#where)
+```node
+const items = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
+
+Y.filter(Y.where({name: Y.equals('Bruce')}))(items);
+```
+[Menu](#toc)
+<a id='filter'></a>
+### Filter
+Filter by one where condition.
+
+See: [```Y.where()```](#where), [```Y.equals()```](#equals), [```Y.compose()```](#compose), [```Y.map()```](#map)
+```node
+const items = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
+
+Y.filter(Y.where({name: Y.equals('Bruce')}))(items);
+
+//OR
+Y.compose(
+  Y.map(Y.applier({age: 33})),
+  Y.filter(Y.where({name: Y.equals('Bruce')}))
+)(items);
+```
+[Menu](#toc)
