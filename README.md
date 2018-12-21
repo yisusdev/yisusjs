@@ -12,6 +12,12 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [Curry](#curry)
 - [Equals](#equals)
 - [Filter](#filter)
+- [FilterP](#filterP)
+- [Flatten](#flatten)
+- [ForOf](#forOf)
+- [Gt](#gt)
+- [Gte](#gte)
+- [Keys](#keys)
 ## Install
 ```
 npm install yisus
@@ -108,5 +114,80 @@ Y.compose(
   Y.map(Y.applier({age: 33})),
   Y.filter(Y.where({name: Y.equals('Bruce')}))
 )(items);
+```
+[Menu](#toc)
+<a id='filterP'></a>
+### FilterP
+Filter by one where condition envelop in a promise.
+
+See: [```Y.pipeP()```](#pipeP), [```Y.mapP()```](#mapP), [```Y.where()```](#where), [```Y.equals()```](#equals), [```Y.applier()```](#applier)
+```node
+const items = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
+const p = Y.filterP(Y.where({name: Y.equals('Bruce')}))(items);
+
+p.then(i => console.log(i));
+
+//OR
+const prom = Y.pipeP(
+  Y.filterP(Y.where({name: Y.equals('Bruce')})),
+  Y.mapP(Y.applier({developer: true}))
+)(items);
+```
+[Menu](#toc)
+<a id='flatten'></a>
+### Flatten
+Make flat an Array.
+
+```node
+const test = [{name:'bruce'}, {name:'gaby'}, [{name:'Fabs'}]];
+const numbers = [1,2,3,[4,5],[6,7],8,9];
+
+console.log(Y.flatten(test)); // [{name:'bruce'}, {name:'gaby'}, {name:'Fabs'}];
+console.log(Y.flatten(numbers)); // [1,2,3,4,5,6,7,8,9]
+```
+[Menu](#toc)
+<a id='forOf'></a>
+### ForOf
+Recurse over a collection, don't uses loops.
+
+See: [```Y.applier()```](#applier)
+```node
+const items = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
+
+Y.forOf((i) => console.log(i))(items);
+
+//OR
+Y.forOf((i) => Y.applier({surname: 'Anonymous'})(i))(items);
+```
+[Menu](#toc)
+<a id='gt'></a>
+### Gt
+Returns if one value is greater than criteria.
+
+See: [```Y.filter()```](#filter), [```Y.where()```](#where)
+```node
+const items = [{age: 30 }, {age: 31}, {age: 28}, {age: 22}];
+
+Y.filter(Y.where({ age: Y.gt(30)}))(items); // [{age:31}]
+```
+[Menu](#toc)
+<a id='gte'></a>
+### Gte
+Returns if one value is greater or equal than criteria.
+
+See: [```Y.filter()```](#filter), [```Y.where()```](#where)
+```node
+const items = [{age: 30 }, {age: 31}, {age: 28}, {age: 22}];
+
+Y.filter(Y.where({ age: Y.gte(30)}))(items); // [{age:30}, {age: 31}]
+```
+[Menu](#toc)
+<a id='keys'></a>
+### Keys
+Gets keys from an object.
+
+```node
+const obj = {name: 'Eduardo', last: 'Romero', user: { id: 33 }};
+console.log('keys', Y.keys(obj)); //[ 'name', 'last', 'user' ]
 ```
 [Menu](#toc)
