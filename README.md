@@ -18,6 +18,15 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [Gt](#gt)
 - [Gte](#gte)
 - [Keys](#keys)
+- [Lt](#lt)
+- [Lte](#lte)
+- [Map](#map)
+- [MapP](#mapP)
+- [Merge](#merge)
+- [MergeDeep](#mergeDeep)
+- [PipeP](#pipeP)
+- [Thunk](#thunk)
+- [Where](#where)
 ## Install
 ```
 npm install yisus
@@ -189,5 +198,139 @@ Gets keys from an object.
 ```node
 const obj = {name: 'Eduardo', last: 'Romero', user: { id: 33 }};
 console.log('keys', Y.keys(obj)); //[ 'name', 'last', 'user' ]
+```
+[Menu](#toc)
+<a id='lt'></a>
+### Lt
+Returns if one value is less than criteria.
+
+See: [```Y.filter()```](#filter), [```Y.where()```](#where)
+```node
+const items = [{age: 30 }, {age: 31}, {age: 34}, {age: 33}];
+
+Y.filter(Y.where({ age: Y.lt(33) }))(items); // [{age: 30}, {age: 31}]
+```
+[Menu](#toc)
+<a id='lte'></a>
+### Lte
+Returns if one value is less or equal than criteria.
+
+See: [```Y.filter()```](#filter), [```Y.where()```](#where), [```Y.equals()```](#equals)
+```node
+const items = [{name: 'Bruce', age: 32}, {name: 'Fabs', age: 25}, {name: 'Gaby', age: 33}];
+Y.filter(Y.where({ age: Y.lte(33), name: Y.equals('Gaby')}))(items) //[{name: 'Gaby', age: 33}]
+```
+[Menu](#toc)
+<a id='map'></a>
+### Map
+Create a map function for iterate over collections
+
+See: [```Y.compose()```](#compose), [```Y.filter()```](#filter), [```Y.where()```](#where), [```Y.equals()```](#equals), [```Y.applier()```](#applier)
+```node
+const items = [1, 2, 3];
+
+Y.map(x => console.log(x))(items); // 1, 2, 3
+
+//OR
+const persons = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
+
+Y.compose(
+  Y.map(Y.applier({age: 33})),
+  Y.filter(Y.where({name: Y.equals('Bruce')}))
+)(persons);
+```
+[Menu](#toc)
+<a id='mapP'></a>
+### MapP
+Create a map function for iterate over collections envelop in a promise.
+
+See: [```Y.pipeP()```](#pipeP), [```Y.filterP()```](#filterP), [```Y.applier()```](#applier), [```Y.where()```](#where)
+```node
+const items = [{name: 'Bruce'}, {name: 'Fabs'}];
+const p = Y.mapP(Y.applier({developer: true}))(items);
+
+p.then(r => console.log(items)); // [{name: 'Bruce', developer: true}, {name: 'Fabs', developer: true}]
+
+//OR
+const prom = Y.pipeP(
+  Y.filterP(Y.where({name: Y.equals('Bruce')})),
+  Y.mapP(Y.applier({developer: true}))
+)(items);
+
+prom.then(r => console.log(items)); // [{name: 'Bruce', developer: true}, {name: 'Fabs'}]
+```
+[Menu](#toc)
+<a id='merge'></a>
+### Merge
+Merge two objects in a new object.
+
+```node
+const obj = {name: 'Bruce', age: 30, child: {name:'Joker'}};
+const no = Y.merge(obj)({});
+console.log(no.child===obj.child);
+```
+[Menu](#toc)
+<a id='mergeDeep'></a>
+### MergeDeep
+Merge two object deeply in a new object.
+
+```node
+const oMergeT = {name: 'Bruce', last: 'Dick', user: { id: 22, username: 'xxx'}};
+const oMergeS = {name: 'Bruce', last: 'Dick', user: { id: 33 }};
+
+console.log('mergeDeep', Y.mergeDeep(oMergeT, oMergeS));
+
+//mergeDeep { name: 'Bruce',
+    last: 'Dick',
+    user: { id: 33, username: 'xxx' } }
+```
+[Menu](#toc)
+<a id='pipeP'></a>
+### pipeP
+Create a pipe for promises.
+
+See: [```Y.filterP()```](#filterP), [```Y.mapP()```](#mapP), [```Y.where()```](#where), [```Y.applier()```](#applier), [```Y.equals()```](#equals)
+```node
+const p1 = (n) => new Promise(resolve => {
+  setTimeout(() => resolve(n * 2), 3000);
+});
+const p2 = (n) => new Promise(resolve => {
+  setTimeout(() => resolve(n + 1), 2000);
+});
+const p3 = (n) => new Promise(resolve => {
+  setTimeout(() => resolve(n + 3), 1000);
+});
+const pip = Y.pipeP(
+  p1,
+  p2,
+  p3
+)(2);
+
+pip.then(r => console.log(r)); // 8
+
+//OR
+const prom = Y.pipeP(
+  Y.filterP(Y.where({name: Y.equals('Bruce')})),
+  Y.mapP(Y.applier({developer: true}))
+)(items);
+```
+[Menu](#toc)
+<a id='thunk'></a>
+### Thunk
+Create a new thunk
+
+```node
+const th = Y.thunk((a, b) => a + b)(2, 3);
+
+console.log(th()); // 5
+```
+[Menu](#toc)
+<a id='where'></a>
+### Where
+Create a where condition function.
+
+See: [```Y.filter()```](#filter), [```Y.where()```](#where), [```Y.equals()```](#equals)
+```node
+Y.filter(Y.where({name: Y.equals('Bruce')}))(items);
 ```
 [Menu](#toc)
