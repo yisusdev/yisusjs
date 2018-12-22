@@ -285,9 +285,9 @@ const oMergeS = {name: 'Bruce', last: 'Dick', user: { id: 33 }};
 
 console.log('mergeDeep', Y.mergeDeep(oMergeT, oMergeS));
 
-//mergeDeep { name: 'Bruce',
+/*mergeDeep { name: 'Bruce',
     last: 'Dick',
-    user: { id: 33, username: 'xxx' } }
+    user: { id: 33, username: 'xxx' } }*/
 ```
 [Menu](#toc)
 <a id='pipeP'></a>
