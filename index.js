@@ -11,6 +11,7 @@ const gte = require('./lib/gte');
 const lt = require('./lib/lt');
 const lte = require('./lib/lte');
 const flatten = require('./lib/flatten');
+const pipe = require('./lib/pipe');
 const pipeP = require('./lib/pipeP');
 const merge = require('./lib/merge');
 const thunk = require('./lib/thunk');
@@ -34,6 +35,7 @@ module.exports = {
   lt,
   lte,
   flatten,
+  pipe,
   pipeP,
   merge,
   thunk,

@@ -8,6 +8,11 @@ const noCurried = (a, b, c, d) => a + b + c + d;
 const oMergeT = {name: 'ss', last: 'sdsdsds', user: { id: 22, username: 'sdsdss'}};
 const oMergeS = {name: 'ss', last: 'sdsdsds', user: { id: 33 }};
 
+const fn1 = n => n * 2;
+const fn2 = n => n + 6;
+const fn3 = n => n - 2;
+
+console.log(Y.pipe(fn1, fn2, fn3)(10));
 console.log('mergeDeep', Y.mergeDeep(oMergeT, oMergeS));
 console.log('keys', Y.keys(oMergeS));
 Y.forOf((i) => Y.applier({surname: 'Anonymous'})(i))(items);

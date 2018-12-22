@@ -135,7 +135,16 @@ describe('Functionally', function () {
       assert.equal(result.user.username, 'xxx');
     })
   });
-  describe('pipeP', function () {
+  describe('Pipe', function () {
+    it('Should generate a pipeline for functions', function () {
+      const fn1 = n => n * 2;
+      const fn2 = n => n + 6;
+      const fn3 = n => n - 2;
+
+      assert.equal(Y.pipe(fn1, fn2, fn3)(10), 24);
+    })
+  });
+  describe('PipeP', function () {
     it('Should generate a pipeline for promises', function (done) {
       this.timeout(3000);
       const p1 = (n) => new Promise(resolve => {

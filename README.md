@@ -29,6 +29,7 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [MapP](#mapP)
 - [Merge](#merge)
 - [MergeDeep](#mergeDeep)
+- [Pipe](#pipe)
 - [PipeP](#pipeP)
 - [Thunk](#thunk)
 - [Where](#where)
@@ -291,6 +292,18 @@ console.log('mergeDeep', Y.mergeDeep(oMergeT, oMergeS));
 /*mergeDeep { name: 'Bruce',
     last: 'Dick',
     user: { id: 33, username: 'xxx' } }*/
+```
+[Menu](#toc)
+<a id='pipe'></a>
+### pipe
+Create a pipeline for functions.
+
+```node
+const fn1 = n => n * 2;
+const fn2 = n => n + 6;
+const fn3 = n => n - 2;
+
+console.log(Y.pipe(fn1, fn2, fn3)(10));
 ```
 [Menu](#toc)
 <a id='pipeP'></a>
