@@ -4,7 +4,7 @@
   "description": "A functional library for JS",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -12,5 +12,8 @@
   },
   "author": "Bruce Pineda",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/yisusdev/yisus#readme"
+  "homepage": "https://bitbucket.org/yisusdev/yisus#readme",
+  "dependencies": {
+    "mocha": "^5.2.0"
+  }
 }
