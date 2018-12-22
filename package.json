@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/yisusdev/yisusjs.git"
   },
+  "engines" : { "node" : ">=8" },
   "author": "Bruce Pineda",
   "license": "ISC",
   "homepage": "https://github.com/yisusdev/yisusjs",

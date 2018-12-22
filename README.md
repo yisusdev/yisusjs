@@ -1,3 +1,5 @@
+![](https://img.shields.io/node/v/yisus.svg)
+
 <img src="https://i.ibb.co/sKcJcMn/yisus.png" width="131" height="162">
 
 # Yisus
