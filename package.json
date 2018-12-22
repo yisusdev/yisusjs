@@ -1,6 +1,6 @@
 {
   "name": "yisus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A functional library for JS",
   "main": "index.js",
   "scripts": {
@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bruce_burton@bitbucket.org/yisusdev/yisus.git"
+    "url": "git+https://github.com/yisusdev/yisusjs.git"
   },
   "author": "Bruce Pineda",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/yisusdev/yisus#readme",
+  "homepage": "https://github.com/yisusdev/yisusjs",
   "dependencies": {
     "mocha": "^5.2.0"
   },
