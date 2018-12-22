@@ -15,5 +15,8 @@
   "homepage": "https://bitbucket.org/yisusdev/yisus#readme",
   "dependencies": {
     "mocha": "^5.2.0"
+  },
+  "devDependencies": {
+    "nyc": "^13.1.0"
   }
 }
