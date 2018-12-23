@@ -8,6 +8,10 @@ const noCurried = (a, b, c, d) => a + b + c + d;
 const oMergeT = {name: 'ss', last: 'sdsdsds', user: { id: 22, username: 'sdsdss'}};
 const oMergeS = {name: 'ss', last: 'sdsdsds', user: { id: 33 }};
 
+console.log(Y.dropout([1, 2, 3])(2));
+
+console.log(Y.diffsBy([2.1, 1.2], [2.3, 3.4])(Math.floor));
+
 const fn1 = n => n * 2;
 const fn2 = n => n + 6;
 const fn3 = n => n - 2;

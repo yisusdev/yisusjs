@@ -20,6 +20,9 @@ const constant = require('./lib/constant');
 const forOf = require('./lib/forOf');
 const keys = require('./lib/keys');
 const mergeDeep = require('./lib/mergeDeep');
+const diffs = require('./lib/diffs');
+const diffsBy = require('./lib/diffsBy');
+const dropout = require('./lib/dropout');
 
 module.exports = {
   compose,
@@ -43,5 +46,8 @@ module.exports = {
   constant,
   forOf,
   keys,
-  mergeDeep
+  mergeDeep,
+  diffs,
+  diffsBy,
+  dropout
 };

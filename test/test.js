@@ -34,6 +34,21 @@ describe('Functionally', function () {
       assert.equal(x(2)(6)(2)(4), 14);
     })
   });
+  describe('Diffs', function () {
+    it('Should gives an array with difference items', function () {
+      assert.equal(Y.diffs([2, 1], [2, 3]).length, 1);
+    })
+  });
+  describe('DiffsBy', function () {
+    it('Should gives an array with difference items by one iterate', function () {
+      assert.equal(Y.diffsBy([2.1, 1.2], [2.3, 3.4])(Math.floor).length, 1);
+    })
+  });
+  describe('Dropout', function () {
+    it('Should gives a slice of an array', function () {
+      assert.equal(Y.dropout([1, 2, 3])(2).length, 1);
+    })
+  });
   describe('Equals', function () {
     it('Should eval a value with other', function () {
       const value = 'Yisus';

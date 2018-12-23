@@ -15,6 +15,9 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [Compose](#compose)
 - [Constant](#constant)
 - [Curry](#curry)
+- [Diffs](#diffs)
+- [DiffsBy](#diffsBy)
+- [Dropout](#dropout)
 - [Equals](#equals)
 - [Filter](#filter)
 - [FilterP](#filterP)
@@ -104,6 +107,27 @@ const noCurried = (a, b, c, d) => a + b + c + d;
 const x = Y.curry(noCurried);
 
 console.log(x(2)(6)(2)(4));
+```
+[Menu](#toc)
+<a id='diffs'></a>
+### Diffs
+Create a array of elements that not includes in other array.
+```node
+Y.diffs([2, 4], [2, 3]); // 4
+```
+[Menu](#toc)
+<a id='diffsBy'></a>
+### DiffsBy
+Create a array of elements that not includes in other array with an iterate.
+ ```node
+Y.diffsBy([2.1, 1.2], [2.3, 3.4])(Math.floor)); // [1.2]
+ ```
+[Menu](#toc)
+<a id='dropout'></a>
+### Dropout
+Gives a slices of an array.
+```node
+Y.dropout([1, 2, 3])(2);
 ```
 [Menu](#toc)
 <a id='equals'></a>
