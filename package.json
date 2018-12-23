@@ -1,6 +1,6 @@
 {
   "name": "yisus",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A functional library for JS",
   "main": "index.js",
   "scripts": {
@@ -14,6 +14,7 @@
   "author": "Bruce Pineda",
   "license": "ISC",
   "homepage": "https://github.com/yisusdev/yisusjs",
+  "keywords": ["fp", "functional", "programming", "yisus"],
   "dependencies": {
     "mocha": "^5.2.0"
   },
