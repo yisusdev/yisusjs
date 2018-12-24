@@ -87,6 +87,11 @@ describe('Functionally', function () {
       assert.equal(items.filter(i => i.surname === 'Anonymous').length, 4);
     })
   });
+  describe('Frags', function () {
+    it('Should give an array with frags from another array', function () {
+      assert.equal(Y.frags([1, 2, 3, 4])(2).length, 2);
+    })
+  });
   describe('Gt', function () {
     it('Should gives true if a value is Greater than other', function () {
       assert.equal(Y.gt(30)(33), true);

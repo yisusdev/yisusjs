@@ -8,6 +8,8 @@ const noCurried = (a, b, c, d) => a + b + c + d;
 const oMergeT = {name: 'ss', last: 'sdsdsds', user: { id: 22, username: 'sdsdss'}};
 const oMergeS = {name: 'ss', last: 'sdsdsds', user: { id: 33 }};
 
+console.log(Y.frags([1,2,3,4,5])(2));
+
 console.log(Y.dropout([1, 2, 3])(2));
 
 console.log(Y.diffsBy([2.1, 1.2], [2.3, 3.4])(Math.floor));

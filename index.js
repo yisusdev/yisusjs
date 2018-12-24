@@ -23,6 +23,7 @@ const mergeDeep = require('./lib/mergeDeep');
 const diffs = require('./lib/diffs');
 const diffsBy = require('./lib/diffsBy');
 const dropout = require('./lib/dropout');
+const frags = require('./lib/frags');
 
 module.exports = {
   compose,
@@ -49,5 +50,6 @@ module.exports = {
   mergeDeep,
   diffs,
   diffsBy,
-  dropout
+  dropout,
+  frags
 };
