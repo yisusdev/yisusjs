@@ -23,6 +23,7 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [FilterP](#filterP)
 - [Flatten](#flatten)
 - [ForOf](#forOf)
+- [Frags](#frags)
 - [Gt](#gt)
 - [Gte](#gte)
 - [Keys](#keys)
@@ -200,6 +201,14 @@ Y.forOf((i) => console.log(i))(items);
 
 //OR
 Y.forOf((i) => Y.applier({surname: 'Anonymous'})(i))(items);
+```
+[Menu](#toc)
+<a id='frags'></a>
+### Frags
+Gives an array with arrays fragmented.
+
+```node
+Y.frags([1, 2, 3, 4])(2); // [[1, 2], [3, 4]]
 ```
 [Menu](#toc)
 <a id='gt'></a>
