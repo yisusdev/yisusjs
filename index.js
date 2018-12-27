@@ -24,6 +24,7 @@ const diffs = require('./lib/diffs');
 const diffsBy = require('./lib/diffsBy');
 const dropout = require('./lib/dropout');
 const frags = require('./lib/frags');
+const handler = require('./lib/handler');
 
 module.exports = {
   compose,
@@ -51,5 +52,6 @@ module.exports = {
   diffs,
   diffsBy,
   dropout,
-  frags
+  frags,
+  handler
 };

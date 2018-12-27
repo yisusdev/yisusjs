@@ -102,6 +102,19 @@ describe('Functionally', function () {
       assert.equal(Y.gte(30)(30), true);
     })
   });
+  describe('Handler', function () {
+    it('Should create a handler to one function.', function (done) {
+      const fnSuccess = r => {
+        assert.equal(r, 45);
+        done();
+      };
+      const fnError = e => console.log(e);
+      const fnSum = a => (rs, rj) => setTimeout(() => rs(a + 5), 500);
+      const fnMult = a => (rs, rj) => setTimeout(() => rs(a * 3), 500);
+
+      Y.handler(fnSum)(Y.handler(fnMult)(fnSuccess, fnError), fnError)(10);
+    })
+  });
   describe('Keys', function () {
     it('Should gives a collection with keys from an object', function () {
       const obj = {name: 'Eduardo', last: 'Romero', user: { id: 33 }};

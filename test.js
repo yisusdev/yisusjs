@@ -8,40 +8,14 @@ const noCurried = (a, b, c, d) => a + b + c + d;
 const oMergeT = {name: 'ss', last: 'sdsdsds', user: { id: 22, username: 'sdsdss'}};
 const oMergeS = {name: 'ss', last: 'sdsdsds', user: { id: 33 }};
 
-const promise = cb => (rs, rj) => {
-  const fnR = r => rs(r);
-  const fnE = e => rj(e);
-  return () => cb(fnR, fnE);
-
-  // const deferred = {};
-  // const p = new Promise((resolve, reject) => {
-  //   deferred.reject = reject;
-  //   p
-  //     .then(resp => !deferred.aborted && resolve(rs(resp)))
-  //     .catch(ex => !deferred.aborted && reject(rj(ex)));
-  // });
-  // p.abort = () => {
-  //   deferred.reject(rj(null));
-  //   deferred.aborted = true;
-  // }
-};
-const pp = a => {
-  return new Promise((resolve, reject) => {
-    resolve(a);
-  });
-};
-
-const promise2 = arg => {
-  
-};
-
 const fnSuccess = r => console.log(r);
 const fnError = e => console.log(e);
-const fnCbOk = rs => setTimeout(() => rs('Ok'), 500);
-const fnCbEx = (rs, rj) => setTimeout(() => rj('Exception'), 600);
+const fnSum = a => (rs, rj) => setTimeout(() => rs(a + 5), 500);
+const fnMult = a => (rs, rj) => setTimeout(() => rs(a * 3), 500);
+const fnCbEx = a => (rs, rj) => setTimeout(() => rj('Exception'), 600);
 
-promise(fnCbOk)(fnSuccess, fnError)();
-promise(fnCbEx)(fnSuccess, fnError)();
+Y.handler(fnSum)(Y.handler(fnMult)(fnSuccess, fnError), fnError)(10);
+Y.handler(fnCbEx)(fnSuccess, fnError)();
 
 
 console.log(Y.frags([1,2,3,4,5])(2));

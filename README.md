@@ -26,6 +26,7 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [Frags](#frags)
 - [Gt](#gt)
 - [Gte](#gte)
+- [Handler](#handler)
 - [Keys](#keys)
 - [Lt](#lt)
 - [Lte](#lte)
@@ -231,6 +232,19 @@ See: [```Y.filter()```](#filter), [```Y.where()```](#where)
 const items = [{age: 30 }, {age: 31}, {age: 28}, {age: 22}];
 
 Y.filter(Y.where({ age: Y.gte(30)}))(items); // [{age:30}, {age: 31}]
+```
+[Menu](#toc)
+<a id='handler'></a>
+### Handler
+Create a handler a kind of promise
+
+```node
+const fnSuccess = r => console.log(r);
+const fnError = e => console.log(e);
+const fnSum = a => (rs, rj) => setTimeout(() => rs(a + 5), 500);
+const fnMult = a => (rs, rj) => setTimeout(() => rs(a * 3), 500);
+
+Y.handler(fnSum)(Y.handler(fnMult)(fnSuccess, fnError), fnError)(10); // 45
 ```
 [Menu](#toc)
 <a id='keys'></a>
