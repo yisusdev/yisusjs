@@ -8,6 +8,8 @@ const noCurried = (a, b, c, d) => a + b + c + d;
 const oMergeT = {name: 'ss', last: 'sdsdsds', user: { id: 22, username: 'sdsdss'}};
 const oMergeS = {name: 'ss', last: 'sdsdsds', user: { id: 33 }};
 
+console.log('flatMap', Y.flatMap(n => [n * 2], [1, 2, 3]));
+
 const fnSuccess = r => console.log(r);
 const fnError = e => console.log(e);
 const fnSum = a => (rs, rj) => setTimeout(() => rs(a + 5), 500);
@@ -20,7 +22,7 @@ Y.handler(fnCbEx)(fnSuccess, fnError)();
 
 console.log(Y.frags([1,2,3,4,5])(2));
 
-console.log(Y.dropout([1, 2, 3])(2));
+console.log(Y.dropout(2)([1, 2, 3]));
 
 console.log(Y.diffsBy([2.1, 1.2], [2.3, 3.4])(Math.floor));
 

@@ -21,6 +21,7 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [Equals](#equals)
 - [Filter](#filter)
 - [FilterP](#filterP)
+- [FlatMap](#flatMap)
 - [Flatten](#flatten)
 - [ForOf](#forOf)
 - [Frags](#frags)
@@ -129,12 +130,12 @@ Y.diffsBy([2.1, 1.2], [2.3, 3.4])(Math.floor)); // [1.2]
 ### Dropout
 Gives a slices of an array.
 ```node
-Y.dropout([1, 2, 3])(2);
+Y.dropout(2)([1, 2, 3]);
 ```
 [Menu](#toc)
 <a id='equals'></a>
 ### Equals
-Returns if one value is equal to criteria.
+Returns if one value is equal to criteria, this is a Setoid according [Fantasy/land Specs](https://github.com/fantasyland/fantasy-land#chain)
 
 See: [```Y.filter()```](#filter), [```Y.where()```](#where)
 ```node
@@ -176,6 +177,14 @@ const prom = Y.pipeP(
   Y.filterP(Y.where({name: Y.equals('Bruce')})),
   Y.mapP(Y.applier({developer: true}))
 )(items);
+```
+[Menu](#toc)
+<a id='flatMap'></a>
+### FlatMap
+Maps a function over a list, this is the chain according [Fantasy/Land Specs](https://github.com/fantasyland/fantasy-land#chain)
+
+```node
+Y.flatMap(n => [n * 2], [1, 2, 3]) // [2, 4, 6]
 ```
 [Menu](#toc)
 <a id='flatten'></a>

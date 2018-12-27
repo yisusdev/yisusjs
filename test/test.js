@@ -46,7 +46,7 @@ describe('Functionally', function () {
   });
   describe('Dropout', function () {
     it('Should gives a slice of an array', function () {
-      assert.equal(Y.dropout([1, 2, 3])(2).length, 1);
+      assert.equal(Y.dropout(2)([1, 2, 3]).length, 1);
     })
   });
   describe('Equals', function () {
@@ -71,6 +71,11 @@ describe('Functionally', function () {
         assert.equal(r.length, 2);
         done();
       })
+    })
+  });
+  describe('FlatMap', function () {
+    it('Should gives a flat array with functor applied', function () {
+      assert.equal(Y.flatMap(n => [n * 2], [1, 2, 3])[0], 2);
     })
   });
   describe('Flatten', function () {
