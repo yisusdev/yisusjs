@@ -8,6 +8,8 @@ const noCurried = (a, b, c, d) => a + b + c + d;
 const oMergeT = {name: 'ss', last: 'sdsdsds', user: { id: 22, username: 'sdsdss'}};
 const oMergeS = {name: 'ss', last: 'sdsdsds', user: { id: 33 }};
 
+Y.forIn(p => console.log(p), {name: 'Bruce', age: 33});
+
 console.log('flatMap', Y.flatMap(n => [n * 2], [1, 2, 3]));
 
 const fnSuccess = r => console.log(r);

@@ -18,6 +18,7 @@ const thunk = require('./lib/thunk');
 const curry = require('./lib/curry');
 const constant = require('./lib/constant');
 const forOf = require('./lib/forOf');
+const forIn = require('./lib/forIn');
 const keys = require('./lib/keys');
 const mergeDeep = require('./lib/mergeDeep');
 const diffs = require('./lib/diffs');
@@ -48,6 +49,7 @@ module.exports = {
   curry,
   constant,
   forOf,
+  forIn,
   keys,
   mergeDeep,
   diffs,

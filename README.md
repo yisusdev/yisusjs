@@ -23,6 +23,7 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [FilterP](#filterP)
 - [FlatMap](#flatMap)
 - [Flatten](#flatten)
+- [ForIn](#forIn)
 - [ForOf](#forOf)
 - [Frags](#frags)
 - [Gt](#gt)
@@ -197,6 +198,14 @@ const numbers = [1,2,3,[4,5],[6,7],8,9];
 
 console.log(Y.flatten(test)); // [{name:'bruce'}, {name:'gaby'}, {name:'Fabs'}];
 console.log(Y.flatten(numbers)); // [1,2,3,4,5,6,7,8,9]
+```
+[Menu](#toc)
+<a id='forIn'></a>
+### ForIn
+Recurse over an object, applying a function in each property.
+
+```node
+Y.forIn(p => console.log(p), {name: 'Bruce', age: 33}); // name, age
 ```
 [Menu](#toc)
 <a id='forOf'></a>

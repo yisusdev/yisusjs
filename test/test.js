@@ -85,6 +85,13 @@ describe('Functionally', function () {
       assert.equal(modified[3], 4);
     })
   });
+  describe('ForIn', function () {
+    it('Should Recurse over an object', function () {
+      const obj = {name: 'Bruce', age: 33};
+      Y.forIn(p => obj[p] = 'Unknown', obj);
+      assert.equal(obj.name, 'Unknown');
+    })
+  });
   describe('ForOf', function () {
     it('Should Recurse over a collection', function () {
       const items = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
