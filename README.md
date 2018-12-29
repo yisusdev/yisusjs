@@ -39,6 +39,7 @@ Yisus is a functional programming library for Node JS, developed at Sngular Mexi
 - [Pipe](#pipe)
 - [PipeP](#pipeP)
 - [Thunk](#thunk)
+- [Transducer](#transducer)
 - [Where](#where)
 - [Contributors](#contributors)
 <a id='install'></a>
@@ -160,6 +161,9 @@ Y.compose(
   Y.map(Y.applier({age: 33})),
   Y.filter(Y.where({name: Y.equals('Bruce')}))
 )(items);
+
+//OR
+Y.filter(x => x % 2 === 0, {a: 1, b: 2, c: 3, d: 4}); // {b: 2, d: 4}
 ```
 [Menu](#toc)
 <a id='filterP'></a>
@@ -312,6 +316,9 @@ Y.compose(
   Y.map(Y.applier({age: 33})),
   Y.filter(Y.where({name: Y.equals('Bruce')}))
 )(persons);
+
+//OR
+Y.map(x => x + 1, {a: 1, b: 2, c: 3, d: 4}); // { a: 2, b: 3, c: 4, d: 5 }
 ```
 [Menu](#toc)
 <a id='mapP'></a>
@@ -409,6 +416,26 @@ Create a new thunk
 const th = Y.thunk((a, b) => a + b)(2, 3);
 
 console.log(th()); // 5
+```
+[Menu](#toc)
+<a id='transducer'></a>
+### Transducer
+Create a transducer using a compose functions.
+
+Transducers are composable and efficient data transformation functions which doesn’t create intermediate collections.
+
+```code
+const xform = Y.compose(
+  Y.map(x => x + 1),
+  Y.filter(x => x % 2 === 0)
+);
+
+Y.transducer(xform, (xs, x) => {
+  xs.push(x);
+  return xs;
+}, [], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+// [ 2, 4, 6, 8, 10 ]
 ```
 [Menu](#toc)
 <a id='where'></a>

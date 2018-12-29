@@ -27,6 +27,7 @@ const dropout = require('./lib/dropout');
 const frags = require('./lib/frags');
 const handler = require('./lib/handler');
 const flatMap = require('./lib/flatMap');
+const transducer = require('./lib/transducer');
 
 module.exports = {
   compose,
@@ -57,5 +58,6 @@ module.exports = {
   dropout,
   frags,
   handler,
-  flatMap
+  flatMap,
+  transducer
 };

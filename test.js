@@ -8,6 +8,21 @@ const noCurried = (a, b, c, d) => a + b + c + d;
 const oMergeT = {name: 'ss', last: 'sdsdsds', user: { id: 22, username: 'sdsdss'}};
 const oMergeS = {name: 'ss', last: 'sdsdsds', user: { id: 33 }};
 
+
+const xform = Y.compose(
+  Y.map(x => x + 1),
+  Y.filter(x => x % 2 === 0)
+);
+
+const tr = Y.transducer(xform, (xs, x) => {
+  xs.push(x);
+  return xs;
+}, [], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+console.log('a', Y.filter(x => x % 2 === 0, {a: 1, b: 2, c: 3, d: 4}));
+console.log('map', Y.map(x => x + 1, {a: 1, b: 2, c: 3, d: 4}));
+console.log('f', tr);
+
 Y.forIn(p => console.log(p), {name: 'Bruce', age: 33});
 
 console.log('flatMap', Y.flatMap(n => [n * 2], [1, 2, 3]));

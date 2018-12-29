@@ -218,6 +218,21 @@ describe('Functionally', function () {
       assert.equal(th(), 5);
     })
   });
+  describe('Transducer', function () {
+    it('Should create a transducer from a compose', function () {
+      const xform = Y.compose(
+        Y.map(x => x + 1),
+        Y.filter(x => x % 2 === 0)
+      );
+
+      const tr = Y.transducer(xform, (xs, x) => {
+        xs.push(x);
+        return xs;
+      }, [], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+      assert.equal(tr.length, 5);
+      tr.map(t => assert.equal(t % 2, 0));
+    })
+  });
   describe('Where', function () {
     it('Should gives a true if a value is equal to another in an object', function () {
       const result = Y.where({name: Y.equals('Bruce')})({name: 'Bruce'});
