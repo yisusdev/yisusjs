@@ -424,7 +424,7 @@ Create a transducer using a compose functions.
 
 Transducers are composable and efficient data transformation functions which doesn’t create intermediate collections.
 
-```code
+```node
 const xform = Y.compose(
   Y.map(x => x + 1),
   Y.filter(x => x % 2 === 0)
