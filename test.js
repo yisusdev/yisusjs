@@ -7,7 +7,9 @@ const merge = {name: 'Bruce', age: 30, child: {name:'Joker'}};
 const noCurried = (a, b, c, d) => a + b + c + d;
 const oMergeT = {name: 'ss', last: 'sdsdsds', user: { id: 22, username: 'sdsdss'}};
 const oMergeS = {name: 'ss', last: 'sdsdsds', user: { id: 33 }};
+const addresses = [{ ip: '192.22.56.0'}, { ip: '192.18.3.3'}];
 
+console.log(Y.includes(Y.where({ip: Y.equals('192.22.56.0')}), addresses));
 
 const xform = Y.compose(
   Y.map(x => x + 1),

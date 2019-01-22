@@ -127,6 +127,12 @@ describe('Functionally', function () {
       Y.handler(fnSum)(Y.handler(fnMult)(fnSuccess, fnError), fnError)(10);
     })
   });
+  describe('includes', function () {
+    it('Should gives a true value, if predicate is in object arrays', function () {
+      const addresses = [{ ip: '192.22.56.0'}, { ip: '192.18.3.3'}];
+      assert.equal(Y.includes(Y.where({ip: Y.equals('192.22.56.0')}), addresses), true);
+    })
+  });
   describe('Keys', function () {
     it('Should gives a collection with keys from an object', function () {
       const obj = {name: 'Eduardo', last: 'Romero', user: { id: 33 }};

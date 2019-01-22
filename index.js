@@ -4,6 +4,7 @@ const filterP = require('./lib/filterP');
 const map = require('./lib/map');
 const mapP = require('./lib/mapP');
 const where = require('./lib/where');
+const includes = require('./lib/includes');
 const applier = require('./lib/applier');
 const equals = require('./lib/equals');
 const gt = require('./lib/gt');
@@ -36,6 +37,7 @@ module.exports = {
   map,
   mapP,
   where,
+  includes,
   applier,
   equals,
   gt,
