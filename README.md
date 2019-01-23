@@ -29,6 +29,7 @@ Yisus is a functional programming library for Node JS, developed at [Sngular](ht
 - [Gt](#gt)
 - [Gte](#gte)
 - [Handler](#handler)
+- [Includes](#includes)
 - [Keys](#keys)
 - [Lt](#lt)
 - [Lte](#lte)
@@ -267,6 +268,14 @@ const fnSum = a => (rs, rj) => setTimeout(() => rs(a + 5), 500);
 const fnMult = a => (rs, rj) => setTimeout(() => rs(a * 3), 500);
 
 Y.handler(fnSum)(Y.handler(fnMult)(fnSuccess, fnError), fnError)(10); // 45
+```
+[Menu](#toc)
+<a id='includes'></a>
+### Includes
+Gets if a predicate is in an array of objects.
+```node
+const addresses = [{ ip: '192.22.56.0'}, { ip: '192.18.3.3'}];
+Y.includes(Y.where({ip: Y.equals('192.22.56.0')}), addresses); // true
 ```
 [Menu](#toc)
 <a id='keys'></a>
