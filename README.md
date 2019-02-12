@@ -47,7 +47,7 @@ npm install yisus
 ```
 <a id='usage'></a>
 ## Usage
-```node
+```js
 const Y = require('yisus');
 
 const arr = [1, 2, 3];
@@ -61,7 +61,7 @@ Below show more usage examples.
 Apply a modification to an object, this returns a function that requires a target object.
 
 See: [```Y.map()```](#map)
-```node
+```js
 const objTarget = {name: 'Yisus', lastname: 'Dev'};
 
 Y.applier({surname: 'Anonymous'})(objTarget);
@@ -77,7 +77,7 @@ Y.map(Y.applier({lastname: 'Anonymous'}))(items);
 Compose two o more functions to execute and the result of the first function is the argument to the next function.
 
 See: [```Y.map()```](#map), [```Y.filter()```](#filter), [```Y.where()```](#where), [```Y.equals()```](#equals), [```Y.applier()```](#applier)
-```node
+```js
 const fn1 = n => n * 2;
 const fn2 = n => n + 3;
 
@@ -97,7 +97,7 @@ Y.compose(
 <a id='constant'></a>
 ### Constant
 Returns a constant value in a function.
-```node
+```js
 const c = Y.constant('Bruce');
 console.log(c());
 ```
@@ -105,7 +105,7 @@ console.log(c());
 <a id='curry'></a>
 ### Curry
 Curry a not curried function.
-```node
+```js
 const noCurried = (a, b, c, d) => a + b + c + d;
 const x = Y.curry(noCurried);
 
@@ -115,21 +115,21 @@ console.log(x(2)(6)(2)(4));
 <a id='diffs'></a>
 ### Diffs
 Create a array of elements that not includes in other array.
-```node
+```js
 Y.diffs([2, 4], [2, 3]); // 4
 ```
 [Menu](#toc)
 <a id='diffsBy'></a>
 ### DiffsBy
 Create a array of elements that not includes in other array with an iterate.
- ```node
+ ```js
 Y.diffsBy([2.1, 1.2], [2.3, 3.4])(Math.floor)); // [1.2]
  ```
 [Menu](#toc)
 <a id='dropout'></a>
 ### Dropout
 Gives a slices of an array.
-```node
+```js
 Y.dropout(2)([1, 2, 3]);
 ```
 [Menu](#toc)
@@ -138,7 +138,7 @@ Y.dropout(2)([1, 2, 3]);
 Returns if one value is equal to criteria, this is a Setoid according [Fantasy/land Specs](https://github.com/fantasyland/fantasy-land#chain)
 
 See: [```Y.filter()```](#filter), [```Y.where()```](#where)
-```node
+```js
 const items = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
 
 Y.filter(Y.where({name: Y.equals('Bruce')}))(items);
@@ -149,7 +149,7 @@ Y.filter(Y.where({name: Y.equals('Bruce')}))(items);
 Filter by one where condition.
 
 See: [```Y.where()```](#where), [```Y.equals()```](#equals), [```Y.compose()```](#compose), [```Y.map()```](#map)
-```node
+```js
 const items = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
 
 Y.filter(Y.where({name: Y.equals('Bruce')}))(items);
@@ -166,7 +166,7 @@ Y.compose(
 Filter by one where condition envelop in a promise.
 
 See: [```Y.pipeP()```](#pipeP), [```Y.mapP()```](#mapP), [```Y.where()```](#where), [```Y.equals()```](#equals), [```Y.applier()```](#applier)
-```node
+```js
 const items = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
 const p = Y.filterP(Y.where({name: Y.equals('Bruce')}))(items);
 
@@ -183,7 +183,7 @@ const prom = Y.pipeP(
 ### FlatMap
 Maps a function over a list, this is the chain according [Fantasy/Land Specs](https://github.com/fantasyland/fantasy-land#chain)
 
-```node
+```js
 Y.flatMap(n => [n * 2], [1, 2, 3]) // [2, 4, 6]
 ```
 [Menu](#toc)
@@ -191,7 +191,7 @@ Y.flatMap(n => [n * 2], [1, 2, 3]) // [2, 4, 6]
 ### Flatten
 Make flat an Array.
 
-```node
+```js
 const test = [{name:'bruce'}, {name:'gaby'}, [{name:'Fabs'}]];
 const numbers = [1,2,3,[4,5],[6,7],8,9];
 
@@ -204,7 +204,7 @@ console.log(Y.flatten(numbers)); // [1,2,3,4,5,6,7,8,9]
 Recurse over a collection, don't uses loops.
 
 See: [```Y.applier()```](#applier)
-```node
+```js
 const items = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
 
 Y.forOf((i) => console.log(i))(items);
@@ -217,7 +217,7 @@ Y.forOf((i) => Y.applier({surname: 'Anonymous'})(i))(items);
 ### Frags
 Gives an array with arrays fragmented.
 
-```node
+```js
 Y.frags([1, 2, 3, 4])(2); // [[1, 2], [3, 4]]
 ```
 [Menu](#toc)
@@ -226,7 +226,7 @@ Y.frags([1, 2, 3, 4])(2); // [[1, 2], [3, 4]]
 Returns if one value is greater than criteria.
 
 See: [```Y.filter()```](#filter), [```Y.where()```](#where)
-```node
+```js
 const items = [{age: 30 }, {age: 31}, {age: 28}, {age: 22}];
 
 Y.filter(Y.where({ age: Y.gt(30)}))(items); // [{age:31}]
@@ -237,7 +237,7 @@ Y.filter(Y.where({ age: Y.gt(30)}))(items); // [{age:31}]
 Returns if one value is greater or equal than criteria.
 
 See: [```Y.filter()```](#filter), [```Y.where()```](#where)
-```node
+```js
 const items = [{age: 30 }, {age: 31}, {age: 28}, {age: 22}];
 
 Y.filter(Y.where({ age: Y.gte(30)}))(items); // [{age:30}, {age: 31}]
@@ -247,7 +247,7 @@ Y.filter(Y.where({ age: Y.gte(30)}))(items); // [{age:30}, {age: 31}]
 ### Handler
 Create a handler a kind of promise
 
-```node
+```js
 const fnSuccess = r => console.log(r);
 const fnError = e => console.log(e);
 const fnSum = a => (rs, rj) => setTimeout(() => rs(a + 5), 500);
@@ -260,7 +260,7 @@ Y.handler(fnSum)(Y.handler(fnMult)(fnSuccess, fnError), fnError)(10); // 45
 ### Keys
 Gets keys from an object.
 
-```node
+```js
 const obj = {name: 'Eduardo', last: 'Romero', user: { id: 33 }};
 console.log('keys', Y.keys(obj)); //[ 'name', 'last', 'user' ]
 ```
@@ -270,7 +270,7 @@ console.log('keys', Y.keys(obj)); //[ 'name', 'last', 'user' ]
 Returns if one value is less than criteria.
 
 See: [```Y.filter()```](#filter), [```Y.where()```](#where)
-```node
+```js
 const items = [{age: 30 }, {age: 31}, {age: 34}, {age: 33}];
 
 Y.filter(Y.where({ age: Y.lt(33) }))(items); // [{age: 30}, {age: 31}]
@@ -281,7 +281,7 @@ Y.filter(Y.where({ age: Y.lt(33) }))(items); // [{age: 30}, {age: 31}]
 Returns if one value is less or equal than criteria.
 
 See: [```Y.filter()```](#filter), [```Y.where()```](#where), [```Y.equals()```](#equals)
-```node
+```js
 const items = [{name: 'Bruce', age: 32}, {name: 'Fabs', age: 25}, {name: 'Gaby', age: 33}];
 Y.filter(Y.where({ age: Y.lte(33), name: Y.equals('Gaby')}))(items) //[{name: 'Gaby', age: 33}]
 ```
@@ -291,7 +291,7 @@ Y.filter(Y.where({ age: Y.lte(33), name: Y.equals('Gaby')}))(items) //[{name: 'G
 Create a map function for iterate over collections
 
 See: [```Y.compose()```](#compose), [```Y.filter()```](#filter), [```Y.where()```](#where), [```Y.equals()```](#equals), [```Y.applier()```](#applier)
-```node
+```js
 const items = [1, 2, 3];
 
 Y.map(x => console.log(x))(items); // 1, 2, 3
@@ -310,7 +310,7 @@ Y.compose(
 Create a map function for iterate over collections envelop in a promise.
 
 See: [```Y.pipeP()```](#pipeP), [```Y.filterP()```](#filterP), [```Y.applier()```](#applier), [```Y.where()```](#where)
-```node
+```js
 const items = [{name: 'Bruce'}, {name: 'Fabs'}];
 const p = Y.mapP(Y.applier({developer: true}))(items);
 
@@ -329,7 +329,7 @@ prom.then(r => console.log(items)); // [{name: 'Bruce', developer: true}, {name:
 ### Merge
 Merge two objects in a new object.
 
-```node
+```js
 const obj = {name: 'Bruce', age: 30, child: {name:'Joker'}};
 const no = Y.merge(obj)({});
 console.log(no.child===obj.child);
@@ -339,7 +339,7 @@ console.log(no.child===obj.child);
 ### MergeDeep
 Merge two object deeply in a new object.
 
-```node
+```js
 const oMergeT = {name: 'Bruce', last: 'Dick', user: { id: 22, username: 'xxx'}};
 const oMergeS = {name: 'Bruce', last: 'Dick', user: { id: 33 }};
 
@@ -354,7 +354,7 @@ console.log('mergeDeep', Y.mergeDeep(oMergeT, oMergeS));
 ### pipe
 Create a pipeline for functions.
 
-```node
+```js
 const fn1 = n => n * 2;
 const fn2 = n => n + 6;
 const fn3 = n => n - 2;
@@ -367,7 +367,7 @@ console.log(Y.pipe(fn1, fn2, fn3)(10));
 Create a pipe for promises.
 
 See: [```Y.filterP()```](#filterP), [```Y.mapP()```](#mapP), [```Y.where()```](#where), [```Y.applier()```](#applier), [```Y.equals()```](#equals)
-```node
+```js
 const p1 = (n) => new Promise(resolve => {
   setTimeout(() => resolve(n * 2), 3000);
 });
@@ -396,7 +396,7 @@ const prom = Y.pipeP(
 ### Thunk
 Create a new thunk
 
-```node
+```js
 const th = Y.thunk((a, b) => a + b)(2, 3);
 
 console.log(th()); // 5
@@ -407,7 +407,7 @@ console.log(th()); // 5
 Create a where condition function.
 
 See: [```Y.filter()```](#filter), [```Y.where()```](#where), [```Y.equals()```](#equals)
-```node
+```js
 Y.filter(Y.where({name: Y.equals('Bruce')}))(items);
 ```
 [Menu](#toc)
