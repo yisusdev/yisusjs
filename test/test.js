@@ -85,6 +85,13 @@ describe('Functionally', function () {
       assert.equal(modified[3], 4);
     })
   });
+  describe('ForIn', function () {
+    it('Should Recurse over an object', function () {
+      const obj = {name: 'Bruce', age: 33};
+      Y.forIn(p => obj[p] = 'Unknown', obj);
+      assert.equal(obj.name, 'Unknown');
+    })
+  });
   describe('ForOf', function () {
     it('Should Recurse over a collection', function () {
       const items = [{name: 'Bruce' }, {name: 'Fabs'}, {name: 'Bruce'}, {name: 'Gaby'}];
@@ -118,6 +125,12 @@ describe('Functionally', function () {
       const fnMult = a => (rs, rj) => setTimeout(() => rs(a * 3), 500);
 
       Y.handler(fnSum)(Y.handler(fnMult)(fnSuccess, fnError), fnError)(10);
+    })
+  });
+  describe('includes', function () {
+    it('Should gives a true value, if predicate is in object arrays', function () {
+      const addresses = [{ ip: '192.22.56.0'}, { ip: '192.18.3.3'}];
+      assert.equal(Y.includes(Y.where({ip: Y.equals('192.22.56.0')}), addresses), true);
     })
   });
   describe('Keys', function () {
@@ -209,6 +222,21 @@ describe('Functionally', function () {
     it('Should create a thunk', function () {
       const th = Y.thunk((a, b) => a + b)(2, 3);
       assert.equal(th(), 5);
+    })
+  });
+  describe('Transducer', function () {
+    it('Should create a transducer from a compose', function () {
+      const xform = Y.compose(
+        Y.map(x => x + 1),
+        Y.filter(x => x % 2 === 0)
+      );
+
+      const tr = Y.transducer(xform, (xs, x) => {
+        xs.push(x);
+        return xs;
+      }, [], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+      assert.equal(tr.length, 5);
+      tr.map(t => assert.equal(t % 2, 0));
     })
   });
   describe('Where', function () {
