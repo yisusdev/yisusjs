@@ -209,7 +209,7 @@ console.log(Y.flatten(numbers)); // [1,2,3,4,5,6,7,8,9]
 ### ForIn
 Recurse over an object, applying a function in each property.
 
-```node
+```js
 Y.forIn(p => console.log(p), {name: 'Bruce', age: 33}); // name, age
 ```
 [Menu](#toc)
@@ -433,7 +433,7 @@ Create a transducer using a compose functions.
 
 Transducers are composable and efficient data transformation functions which doesn’t create intermediate collections.
 
-```node
+```js
 const xform = Y.compose(
   Y.map(x => x + 1),
   Y.filter(x => x % 2 === 0)

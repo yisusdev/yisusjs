@@ -1,6 +1,6 @@
 {
   "name": "yisus",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "A functional library for JS",
   "main": "index.js",
   "scripts": {
